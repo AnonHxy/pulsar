@@ -909,7 +909,7 @@ public class Consumer {
 
     public void redeliverUnacknowledgedMessages(List<MessageIdData> messageIds) {
         int totalRedeliveryMessages = 0;
-        List<PositionImpl> pendingPositions = Lists.newArrayList();
+        List<PositionImpl> pendingPositions = Lists.newLinkedList();
         for (MessageIdData msg : messageIds) {
             PositionImpl position = PositionImpl.get(msg.getLedgerId(), msg.getEntryId());
             LongPair longPair = pendingAcks.get(position.getLedgerId(), position.getEntryId());
